@@ -29,7 +29,7 @@ function format(data) {
 		data: data,
 		error: false
 	};
-	var code = '(function() { try { ret.data = ' + data + ' ; } catch ( e ) { ret.error = e.message; } }());';
+	var code = '(function() { try { ret.data = ' + data + ' } catch ( e ) { ret.error = e.message; } }());';
 
 	try {
 		eval(code);
