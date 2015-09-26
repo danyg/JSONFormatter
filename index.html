@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>JSON Formatter</title>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link href="./styles.css" type="text/css" media="screen" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="app-bar" id="app-bar">
+			<button type="button" class="btn BTN_FORMAT" data-toggle="tooltip" data-placement="right" title="Format (Ctrl+Shift+F)">
+				<i class="glyphicon glyphicon-indent-left"></i>
+				Format
+			</button>
+		</div>
+		<pre id="editor">{theString: 'weir \u00f3'}</pre>
+		<div id="alertBox"></div>
+
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src="aceEditMin/ace.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>
