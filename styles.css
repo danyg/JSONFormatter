@@ -84,6 +84,12 @@ pre {
 	margin-right: 5px;
 }
 
+.app-bar .pull-right {
+	float: right;
+	margin-right: 0px;
+	margin-left: 5px;
+}
+
 .app-bar .btn {
 	background: #555;
 	color: #eee;

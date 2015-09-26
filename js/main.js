@@ -243,4 +243,98 @@
 
 	plugins.push(html);
 
+
+	// skin
+	// ==========
+
+	var skin = {
+		_options: [
+			{ title: 'Ambiance', path: 'ace/theme/ambiance'},
+			{ title: 'Chaos', path: 'ace/theme/chaos'},
+			{ title: 'Chrome', path: 'ace/theme/chrome'},
+			{ title: 'Clouds', path: 'ace/theme/clouds'},
+			{ title: 'Clouds Midnight', path: 'ace/theme/clouds midnight'},
+			{ title: 'Cobalt', path: 'ace/theme/cobalt'},
+			{ title: 'Crimson editor', path: 'ace/theme/crimson editor'},
+			{ title: 'Dawn', path: 'ace/theme/dawn'},
+			{ title: 'Dreamweaver', path: 'ace/theme/dreamweaver'},
+			{ title: 'Eclipse', path: 'ace/theme/eclipse'},
+			{ title: 'Github', path: 'ace/theme/github'},
+			{ title: 'Idle Fingers', path: 'ace/theme/idle fingers'},
+			{ title: 'Iplastic', path: 'ace/theme/iplastic'},
+			{ title: 'Katzenmilch', path: 'ace/theme/katzenmilch'},
+			{ title: 'KR Theme', path: 'ace/theme/kr theme'},
+			{ title: 'Kuroir', path: 'ace/theme/kuroir'},
+			{ title: 'Merbivore', path: 'ace/theme/merbivore'},
+			{ title: 'Merbivore soft', path: 'ace/theme/merbivore soft'},
+			{ title: 'Mono Industrial', path: 'ace/theme/mono industrial'},
+			{ title: 'Monokai', path: 'ace/theme/monokai'},
+			{ title: 'Pastel On Dark', path: 'ace/theme/pastel on dark'},
+			{ title: 'Solarized Dark', path: 'ace/theme/solarized dark'},
+			{ title: 'Solarized Light', path: 'ace/theme/solarized light'},
+			{ title: 'Sqlserver', path: 'ace/theme/sqlserver'},
+			{ title: 'Terminal', path: 'ace/theme/terminal'},
+			{ title: 'Textmate', path: 'ace/theme/textmate'},
+			{ title: 'Tomorrow', path: 'ace/theme/tomorrow'},
+			{ title: 'Tomorrow Night', path: 'ace/theme/tomorrow night'},
+			{ title: 'Tomorrow Night Blue', path: 'ace/theme/tomorrow night blue'},
+			{ title: 'Tomorrow Night Bright', path: 'ace/theme/tomorrow night bright'},
+			{ title: 'Tomorrow Night Eighties', path: 'ace/theme/tomorrow night eighties'},
+			{ title: 'Twilight', path: 'ace/theme/twilight'},
+			{ title: 'Vibrant Ink', path: 'ace/theme/vibrant ink'},
+			{ title: 'Xcode', path: 'ace/theme/xcode'}
+		],
+		_optSelected: null,
+		_lastOptSelected: null,
+		init: function() {
+			var ix = localStorage.getItem('skin-opt');
+			if(ix === null) {
+				ix = 31;
+			}
+			this._optSelected = this._options[ix];
+			this._lastOptSelected = this._options[ix];
+			this._placeTool();
+
+			this._set();
+		},
+		format: function(str) {
+			return str;
+		},
+		unformat: function(str) {
+			return str;
+		},
+
+		_placeTool: function() {
+			var me = this;
+			var $select = $('<select class="pull-right"></select>')
+				.appendTo($appBar)
+			;
+			this._options.forEach(function(item, i) {
+				var $option = $('<option>')
+						.val(i)
+						.text(item.title)
+				;
+				if (me._optSelected === item) {
+					$option.attr('selected', true);
+				}
+				$option.appendTo($select);
+			});
+			$select.on('change', function() {
+				var ix = $(this).val();
+				me._select(ix);
+			});
+		},
+		_select: function(ix){
+			this._optSelected = this._options[ix];
+			localStorage.setItem('skin-opt', ix);
+			this._set();
+		},
+		_set: function() {
+			editor.setTheme(this._optSelected.path);
+		}
+	};
+
+	plugins.push(skin);
+
+
 }());
